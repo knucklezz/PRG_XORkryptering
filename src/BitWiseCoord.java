@@ -6,11 +6,11 @@ public class BitWiseCoord {
 
 
     public static void main(String[] args) {
-     BitWiseCoord mittTal = new BitWiseCoord(200,200);
+     BitWiseCoord mittTal = new BitWiseCoord(22,12);
         System.out.println(Integer.toBinaryString(0xFFFF & Coords));
         System.out.println(mittTal.Coords);
-        getCoordsX(Coords);
-        getCoordsY(Coords);
+        System.out.println(getCoordsX());
+        System.out.println(getCoordsY());
     }
 
     //konstruktor
@@ -25,7 +25,6 @@ public class BitWiseCoord {
     }
 
     public void setLow(int y) {
-
         Coords = (short)((Coords & 0xFF00) | y);
     }
 
@@ -37,13 +36,11 @@ public class BitWiseCoord {
         return (Coords & 0xFF);
     }
 
-    public static short getCoordsX(int x){
-        Coords = (short)((Coords & 0xFF) | (x >>> 8));
-        return(Coords);
+    public static short getCoordsX(){
+        return (short)((Coords >>> 8) & 0xFF);
     }
-    public static short getCoordsY(int y){
-        Coords = (short)((Coords & 0xFF00) | y);
-        return(Coords);
+    public static short getCoordsY(){
+        return (short)(Coords & 0xFF);
     }
 
 }
